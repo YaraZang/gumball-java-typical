@@ -1,33 +1,31 @@
-
-public class GumballMachine extends superGumball
+public class GumballMachine2 extends superGumball
 {
 
-	boolean has_quarter;
+  
 
-    public GumballMachine( int size )
+    public GumballMachine2( int size )
     {
         // initialise instance variables
     		super(size);
-    		this.has_quarter = false;
     }
 
     
     public void insertQuarter(int coin)
     {
-        if ( coin == 25 )
-            this.has_quarter = true ;
-        else 
-            this.has_quarter = false ;
+    		// only when the coin is a quarter and less than 2 coins, accept the coin
+        if ( coin == 25 && this.coin_sum + coin <= 50)
+        		this.coin_sum += coin;
+        // else will not accept the coin
     }
     
     public void turnCrank()
     {
-	    	if ( this.has_quarter )
+	    	if ( this.coin_sum == 50 )
 	    	{
 	    		if ( this.num_gumballs > 0 )
 	    		{
 	    			this.num_gumballs-- ;
-	    			this.has_quarter = false ;
+	    			this.coin_sum = 0;
 	    			System.out.println( "Thanks for your quarter.  Gumball Ejected!" ) ;
 	    		}
 	    		else
@@ -41,3 +39,4 @@ public class GumballMachine extends superGumball
 	    	}        
     }
 }
+
